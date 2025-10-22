@@ -1,0 +1,136 @@
+.instruction-section {
+  background: #ffffff;
+  border-bottom-left-radius: 48px;
+  border-bottom-right-radius: 48px;
+  padding: 24px 0 48px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.instruction-container {
+  max-width: 1168px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.instruction-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.instruction-title {
+  margin: 0;
+  color: #2A2E33;
+  font-size: 45px;
+  line-height: 52px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.instruction-subtitle {
+  margin: 0;
+  color: #6C7380;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  align-items: stretch;
+}
+
+.step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  padding: 24px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.step-badge {
+  width: 63px;
+  height: 63px;
+  border-radius: 50%;
+  background: #F7F8FA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.04);
+}
+
+.step-number {
+  color: #2A2E33;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+.step-text {
+  margin: 0;
+  color: #2A2E33;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.step-note {
+  margin: 0;
+  color: #6C7380;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.step-link {
+  color: #56B237;
+  text-decoration: underline;
+  transition: filter 0.15s ease;
+}
+
+.step-link:hover {
+  filter: brightness(0.95);
+}
+
+@media (min-width: 1024px) {
+  .step--left,
+  .step--right {
+    border-bottom: 2px solid #F7F8FA;
+  }
+  .step--middle {
+    border-left: 2px solid #F7F8FA;
+    border-right: 2px solid #F7F8FA;
+  }
+}
+
+@media (max-width: 1023px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .step--middle {
+    border-left: none;
+    border-right: none;
+  }
+  .step-card:not(:last-child) {
+    border-bottom: 2px solid #F7F8FA;
+  }
+}
+
+@media (max-width: 767px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .instruction-title {
+    font-size: 34px;
+    line-height: 40px;
+  }
+}

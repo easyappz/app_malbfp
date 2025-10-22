@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Calculator from '../components/Calculator';
+import InstructionSection from '../components/InstructionSection';
 import { getStatus } from '../api/status';
 import makeEasyTag from '../utils/easytag';
 
@@ -27,6 +28,7 @@ export default function Home() {
     <div style={{ width: '100%', minHeight: '100vh', background: '#000', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }} {...et()}>
       <div style={{ width: '100%' }} {...et()}>
         <Calculator />
+        <InstructionSection />
         <div className="home-status" {...et()}>
           <small {...et()}>
             {status
