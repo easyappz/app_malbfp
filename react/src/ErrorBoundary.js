@@ -1,4 +1,7 @@
 import React from 'react';
+import makeEasyTag from './utils/easytag';
+
+const et = makeEasyTag('src/ErrorBoundary.js');
 
 class ErrorBoundary extends React.Component {
   state = { hasError: false, error: null, errorInfo: null };
@@ -20,7 +23,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <h1>Что-то пошло не так.</h1>;
+      return <h1 {...et()}>Что-то пошло не так.</h1>;
     }
 
     return this.props.children;
