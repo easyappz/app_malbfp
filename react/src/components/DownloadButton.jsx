@@ -4,8 +4,13 @@ import makeEasyTag from '../utils/easytag';
 const et = makeEasyTag('src/components/DownloadButton.jsx');
 
 export default function DownloadButton({ store, label, soon = false }) {
-  const bg = '#1a241d';
-  const text = '#ffffff';
+  const classes = [
+    'download-button',
+    store ? `download-button--${store}` : '',
+    soon ? 'is-soon' : ''
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const Icon = () => {
     if (store === 'ruStore') {
@@ -32,16 +37,14 @@ export default function DownloadButton({ store, label, soon = false }) {
   };
 
   return (
-    <div className="download-button" style={{ background: bg, color: text }} {...et()}>
+    <div className={classes} aria-label={soon ? `${label} — скоро` : `${label}`} {...et()}>
       <div className="download-button__icon" {...et()}><Icon /></div>
       <div className="download-button__text" {...et()}>
-        <strong {...et()}>{label}</strong>
-        <span className="download-button__caption" {...et()}>
-          Скачать через
-        </span>
+        <span className="download-button__caption" {...et()}>Скачать через</span>
+        <strong className="download-button__label" {...et()}>{label}</strong>
       </div>
       {soon && (
-        <span className="download-button__soon" {...et()}>Скоро</span>
+        <span className="download-button__badge" {...et()}>Скоро</span>
       )}
     </div>
   );
