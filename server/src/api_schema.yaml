@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: Simple Express API
+  version: 1.0.0
+  description: |
+    Minimal API for the app. No database required.
+servers:
+  - url: http://localhost:3001
+    description: Local server
+paths:
+  /api/hello:
+    get:
+      summary: Returns greeting message
+      operationId: getHello
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelloResponse'
+              examples:
+                success:
+                  value:
+                    message: Hello from API!
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/status:
+    get:
+      summary: Returns API status and timestamp
+      operationId: getStatus
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+              examples:
+                success:
+                  value:
+                    status: ok
+                    timestamp: 2025-01-01T00:00:00.000Z
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    HelloResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+        - message
+    StatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        timestamp:
+          type: string
+          format: date-time
+      required:
+        - status
+        - timestamp
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 500
+        message:
+          type: string
+          example: Something went wrong
+        stack:
+          type: string
+          nullable: true
